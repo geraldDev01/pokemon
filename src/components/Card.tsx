@@ -19,7 +19,7 @@ export const Card: React.FC<CardProps> = ({ pokemon }) => {
         <h2 className="Card-name">{pokemon.name}</h2>
       </div>
       <button className="Card-button" onClick={handleDetailsClick}>
-        See Details
+        More Details
       </button>
     </div>
   );

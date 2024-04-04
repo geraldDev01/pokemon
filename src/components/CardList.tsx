@@ -41,8 +41,8 @@ export const CardList: React.FC = () => {
 
     const showNoItemsMessage = () => {
         return (
-            <div className="my-5 d-flex">
-                <h1 className="large">No results for your search</h1>
+            <div className="no-results-container">
+                <h1>No results for your search</h1>
             </div>
         );
     };
@@ -56,7 +56,7 @@ export const CardList: React.FC = () => {
                     dataLength={pokemonCards.length}
                     next={loadPokemons}
                     hasMore={true}
-                    loader={<h4>Loading...</h4>}
+                    loader={<h1>Loading...</h1>}
                 >
                     <div className="cardList-container">{pokemonCards}</div>
                 </Scroll>

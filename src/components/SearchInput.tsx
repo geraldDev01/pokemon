@@ -18,6 +18,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
         className="Search-input"
         placeholder="Search..."
         onChange={handleSearch}
+        autoComplete="off"
       />
       <figure className="Search-icon">
         <Image src={searchIcon} alt="search icon" width={25} />

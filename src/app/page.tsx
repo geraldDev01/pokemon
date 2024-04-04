@@ -21,7 +21,6 @@ export default function Home() {
           <Image
             src={pokemonIcon}
             alt="pokemon logo"
-            // width="auto"
             height={150}
             priority
           />
