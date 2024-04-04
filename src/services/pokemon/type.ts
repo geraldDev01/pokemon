@@ -1,8 +1,10 @@
 export type PokemonType = {
     id: number;
     name: string;
+    height: number;
+    weight: number;
     imageUrl: string;
-    detailsUrl: string;
+    types: Array<string>;
 };
 
 export type OptionsType = {

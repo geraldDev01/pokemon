@@ -1,43 +1,21 @@
-"use client"
-import { getPokemons } from "@/services/pokemon/index";
-import { useEffect } from "react"
-type Pokemon = {
-  id: number;
-  name: string;
-  imageUrl: string;
-  detailsUrl: string;
-};
+import { PokemonType } from "@/services/pokemon/type";
+import Image from "next/image";
+
 
 type CardProps = {
-  pokemon: Pokemon;
-  //   onDetailsClick: (detailsUrl: string) => void;
+  pokemon: PokemonType;
 };
 
 export const Card: React.FC<CardProps> = ({ pokemon }) => {
-
-  useEffect(() => {
-
-    loadPokemons();
-  }, []);
-
-  const loadPokemons = async () => {
-    try {
-      const pokemons = await getPokemons();
-      console.log("testing", pokemons);
-    } catch (error) {
-      console.error("Error fetching pokemons:", error);
-    }
-  };
-
-
   const handleDetailsClick = () => {
-    // onDetailsClick(pokemon.detailsUrl);
+    //TODO
+    // send to the details page
   };
 
   return (
     <div className="Card-container">
       <div className="Card-content">
-        <img className="Card-image" src={pokemon.imageUrl} alt={pokemon.name} />
+        <Image width={150} height={150} className="Card-image" src={pokemon.imageUrl} alt={pokemon.name} />
         <h2 className="Card-name">{pokemon.name}</h2>
       </div>
       <button className="Card-button" onClick={handleDetailsClick}>

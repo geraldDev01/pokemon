@@ -1,26 +1,18 @@
 "use client";
 import Image from "next/image";
 import { Header } from "@/components/Header";
-import SearchInput from "@/components/SearchInput";
-import pokemonIcon from "@/assets/images/pokemon.jpeg";
+import { SearchInput } from "@/components/SearchInput";
+import { CardList } from "@/components/CardList";
 
+import pokemonIcon from "@/assets/images/pokemon.jpeg";
 import "@/styles/main.scss";
-import { Card } from "@/components/Card";
+
 
 export default function Home() {
   const handleSearch = (query: string) => {
     console.log("Searching for:", query);
   };
-  const onDetailsClick = (query: string) => {
-    console.log("Searching for:", query);
-  };
 
-  const pokemonExample = {
-    id: 1,
-    name: "pikachu",
-    imageUrl: "http://",
-    detailsUrl: "http://",
-  };
   return (
     <main>
       <Header />
@@ -29,7 +21,7 @@ export default function Home() {
           <Image
             src={pokemonIcon}
             alt="pokemon logo"
-            width="auto"
+            // width="auto"
             height={150}
             priority
           />
@@ -37,7 +29,7 @@ export default function Home() {
         <SearchInput onSearch={handleSearch} />
       </section>
       <section>
-        <Card pokemon={pokemonExample} />
+        <CardList />
       </section>
     </main>
   );

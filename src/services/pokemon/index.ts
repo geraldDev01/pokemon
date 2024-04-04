@@ -1,7 +1,8 @@
 import { requestData } from "../axios/requestData";
 import { PokemonType, OptionsType } from "./type";
 
-export const getPokemons: () => Promise<Array<PokemonType>> = async (options: OptionsType = {}) => {
+export const getPokemons = async (options: OptionsType = {}) => {
+  // () => Promise<Array<PokemonType>> 
   const {
     limit = 20,
     offset = 0,
@@ -33,7 +34,18 @@ export const getPokemons: () => Promise<Array<PokemonType>> = async (options: Op
         return pokemonResponse.data;
       });
       const pokemonData = await Promise.all(promises);
-      return pokemonData;
+
+      const pokemonRequiredData = pokemonData.map((pokemon: any) => {
+        return {
+          id: pokemon.id,
+          name: pokemon.name,
+          imageUrl: pokemon.sprites.other.dream_world.front_default,
+          types: pokemon.types,
+          height: pokemon.height,
+          weight: pokemon.weight,
+        };
+      });
+      return pokemonRequiredData;
 
     } else {
       throw new Error('Invalid response format');
