@@ -1,3 +1,6 @@
+"use client"
+import { getPokemons } from "@/services/pokemon/index";
+import {useEffect} from "react"
 type Pokemon = {
   id: number;
   name: string;
@@ -11,6 +14,10 @@ type CardProps = {
 };
 
 export const Card: React.FC<CardProps> = ({ pokemon }) => {
+
+  useEffect(() =>{
+    getPokemons();
+  }, [])
   const handleDetailsClick = () => {
     // onDetailsClick(pokemon.detailsUrl);
   };
