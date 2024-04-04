@@ -1,6 +1,6 @@
 "use client"
 import { getPokemons } from "@/services/pokemon/index";
-import {useEffect} from "react"
+import { useEffect } from "react"
 type Pokemon = {
   id: number;
   name: string;
@@ -15,9 +15,21 @@ type CardProps = {
 
 export const Card: React.FC<CardProps> = ({ pokemon }) => {
 
-  useEffect(() =>{
-    getPokemons();
-  }, [])
+  useEffect(() => {
+
+    loadPokemons();
+  }, []);
+
+  const loadPokemons = async () => {
+    try {
+      const pokemons = await getPokemons();
+      console.log("testing", pokemons);
+    } catch (error) {
+      console.error("Error fetching pokemons:", error);
+    }
+  };
+
+
   const handleDetailsClick = () => {
     // onDetailsClick(pokemon.detailsUrl);
   };
