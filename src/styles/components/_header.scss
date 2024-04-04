@@ -1,0 +1,38 @@
+.Header {
+  background-color: $secondary-color;
+  height: 91px;
+  width: 100%;
+  padding: 0 35px;
+
+  &-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  &-logo img {
+    width: 60px;
+    height: 60px;
+  }
+
+  &-links {
+    align-items: center;
+    display: flex;
+    column-gap: 20px;
+    justify-content: space-between;
+  }
+
+  &-link {
+    color: $white-color;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover {
+      color: $primary-color;
+      transition: all 0.3s ease-in;
+    }
+  }
+}

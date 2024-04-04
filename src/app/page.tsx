@@ -1,8 +1,11 @@
+import { Header } from "@/components/Header";
+
+import "@/styles/main.scss";
 
 export default function Home() {
   return (
     <main>
-      <div>hello word</div>
+      <Header />
     </main>
   );
 }
