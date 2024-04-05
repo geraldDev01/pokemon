@@ -2,18 +2,22 @@ import { requestData } from "../axios/requestData";
 import { PokemonType, OptionsType } from "./type";
 
 export const getPokemons = async (options: OptionsType = {}) => {
-  // () => Promise<Array<PokemonType>> 
   const {
+    name = "",
     limit = 20,
     offset = 0,
   } = options;
 
-  const params = {
+  const params: OptionsType = {
     limit,
     offset,
   };
 
   const url = '/pokemon';
+
+  if (name) {
+    params.name = name;
+  }
 
   try {
     const response = await requestData({
@@ -52,6 +56,33 @@ export const getPokemons = async (options: OptionsType = {}) => {
     }
   } catch (error) {
     console.error('Error fetching pokemons:', error);
+    throw error;
+  }
+};
+
+export const getPokemonByIdOrName = async (idOrName: string) => {
+  try {
+    const response = await requestData({
+      method: 'GET',
+      url: `/pokemon/${idOrName}`,
+    });
+
+    const pokemonData = response.data;
+
+    const pokemonRequiredData = {
+      id: pokemonData.id,
+      name: pokemonData.name,
+      imageUrl: pokemonData.sprites.other.dream_world.front_default,
+      types: pokemonData.types,
+      height: pokemonData.height,
+      weight: pokemonData.weight,
+      abilities: pokemonData.abilities,
+      experience: pokemonData.base_experience
+    };
+
+    return pokemonRequiredData;
+  } catch (error) {
+    console.error(`Error fetching pokemon with ID or name ${idOrName}:`, error);
     throw error;
   }
 };

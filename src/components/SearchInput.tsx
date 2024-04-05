@@ -1,15 +1,25 @@
 import Image from "next/image";
 import searchIcon from "@/assets/images/search.svg";
+import debounce from "lodash.debounce"
+import { usePokemonContext } from "@/context/PokemonContext/PokemonContext";
 
-type SearchInputProps = {
-  onSearch: (query: string) => void;
-};
+export const SearchInput: React.FC = () => {
+  const { setSearch, setCurrentPage, setPokemonCards, search } = usePokemonContext();
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value;
-    onSearch(query);
-  };
+  const debouncedFunction = debounce((text: string) => {
+    setCurrentPage(0);
+    setPokemonCards([]);
+    setSearch(text);
+  }, 1000);
+
+
+  const updateSearch = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
+    const trimmed = value.trim()
+
+    if (trimmed !== search) {
+      debouncedFunction(trimmed)
+    }
+  }
 
   return (
     <div className="Search">
@@ -17,7 +27,8 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
         type="text"
         className="Search-input"
         placeholder="Search..."
-        onChange={handleSearch}
+        onChange={updateSearch}
+        autoComplete="off"
       />
       <figure className="Search-icon">
         <Image src={searchIcon} alt="search icon" width={25} />

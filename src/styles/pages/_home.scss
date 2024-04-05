@@ -1,0 +1,66 @@
+.landing {
+    position: relative;
+    height: 100vh;
+
+    &-banner-content {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+
+    &-inner {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    &-lg-text {
+        font-size: 3rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    &-md-text {
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+    }
+
+    &-overlay {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, .1)
+    }
+
+    &-btn-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn {
+        display: inline-block;
+        color: $white-color;
+        padding: 0.6rem 1.3rem;
+        border: none;
+        font-size: 1rem;
+        margin-right: 0.5rem;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.2s ease-in;
+        border-radius: 5px;
+
+        &.btn-primary {
+            background-color: $primary-color;
+        }
+
+    }
+
+}
