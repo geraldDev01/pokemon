@@ -2,18 +2,22 @@ import { requestData } from "../axios/requestData";
 import { PokemonType, OptionsType } from "./type";
 
 export const getPokemons = async (options: OptionsType = {}) => {
-  // () => Promise<Array<PokemonType>> 
   const {
+    name = "",
     limit = 20,
     offset = 0,
   } = options;
 
-  const params = {
+  const params: OptionsType = {
     limit,
     offset,
   };
 
   const url = '/pokemon';
+
+  if (name) {
+    params.name = name;
+  }
 
   try {
     const response = await requestData({

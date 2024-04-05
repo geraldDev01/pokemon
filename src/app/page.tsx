@@ -7,11 +7,7 @@ import { CardList } from "@/components/CardList";
 import pokemonIcon from "@/assets/images/pokemon.jpeg";
 import "@/styles/main.scss";
 
-
 export default function Home() {
-  const handleSearch = (query: string) => {
-    console.log("Searching for:", query);
-  };
 
   return (
     <main>
@@ -25,7 +21,7 @@ export default function Home() {
             priority
           />
         </figure>
-        <SearchInput onSearch={handleSearch} />
+        <SearchInput />
       </section>
       <section>
         <CardList />
