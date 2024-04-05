@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { PokemonType } from '@/services/pokemon/type';
 import { getPokemonByIdOrName } from '@/services/pokemon';
 import Image from 'next/image';
+import pokemonIcon from "@/assets/images/pokemon.jpeg";
+import { Header } from '@/components/Header';
 
 export default function PokemonDetail(): JSX.Element {
     const router = useRouter();
@@ -29,35 +31,69 @@ export default function PokemonDetail(): JSX.Element {
     }
 
     return (
-        <section className="section_detail">
-            <div className="card">
-                <div className="imgBx">
-                    <figure>
-                        <Image
-                            width={400}
-                            height={450}
-                            className="img-fluid Character-image"
-                            src={pokemon.imageUrl}
-                            alt={pokemon.name}
-                        />
-                    </figure>
-                </div>
+        <div>
+            <Header/>
+            <div className='logo-container-detail'>
+                <figure>
+                    <Image
+                        src={pokemonIcon}
+                        alt="pokemon logo"
+                        height={220}
+                        priority
+                    />
+                </figure>
             </div>
-
-            <div className="Character-info">
-                <h1 className="x-large title-text">{pokemon.name}</h1>
-
-                <div className='line'></div>
-                <p className="large">Information</p>
-                <div>
-                    <p>Height: {pokemon.height}</p>
-                    <p>Weight: {pokemon.weight}</p>
+            <section className="section_detail">
+                <div className="card">
+                    <div className="imgBx">
+                        <figure>
+                            <Image
+                                width={400}
+                                height={450}
+                                className="img-fluid Character-image"
+                                src={pokemon.imageUrl}
+                                alt={pokemon.name}
+                            />
+                        </figure>
+                    </div>
                 </div>
-                <div className="line"></div>
 
-            </div>
+                <div className="pokemon-info">
+                    <h1 className="lg-text">My name is {pokemon.name}</h1>
 
-        </section>
+                    <div className='line'></div>
+                    <p className="md-text">Information</p>
+                    <div className='info-content'>
+                        <p>Expirience level: <strong>{pokemon.experience}</strong> </p>
+                        <p>Height: <strong>{pokemon.height}</strong></p>
+                        <p>Weight: <strong>{pokemon.weight}</strong> </p>
+                    </div>
+                    <div className='line'></div>
+                    <p className="md-text">abilities</p>
+                    <div className="abilities-container">
+                        {pokemon.abilities && pokemon.abilities.map((ability, index) => (
+                            <div
+                                key={index}
+                                className={`ability ${ability.is_hidden ? 'hidden-ability' : ''}`}
+                            >
+                                {ability.ability.name}
+                            </div>
+                        ))}
+                    </div>
+                    <div className="line"></div>
 
+                    <p className="md-text">Type</p>
+                    <div className="types-container">
+                        {pokemon.types && pokemon.types.map((type, index) => (
+                            <div key={index} className={`type ${type.type.name}`}>
+                                {type.type.name}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
     );
 }

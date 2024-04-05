@@ -1,7 +1,6 @@
 "use client"
+import { usePokemonContext } from "@/context/PokemonContext/PokemonContext";
 import Scroll from "react-infinite-scroll-component";
-import { usePokemonContext } from "@/context/PokemonContext";
-
 
 export const CardList: React.FC = () => {
     const { pokemonCards, loadPokemons } = usePokemonContext();
@@ -23,7 +22,7 @@ export const CardList: React.FC = () => {
                     dataLength={pokemonCards.length}
                     next={loadPokemons}
                     hasMore={true}
-                    loader={<h1>Loading...</h1>}
+                    loader={<div className="no-results-container"><h1>Loading...</h1></div>}
                 >
                     <div className="cardList-container">{pokemonCards}</div>
                 </Scroll>
