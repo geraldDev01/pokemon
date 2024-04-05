@@ -4,7 +4,7 @@ import { SearchInput } from "@/components/SearchInput";
 import { CardList } from "@/components/CardList";
 import pokemonIcon from "@/assets/images/pokemon.jpeg";
 
-export default function Home(): JSX.Element {
+export default function Pokemon(): JSX.Element {
     return (
         <main>
             <Header />

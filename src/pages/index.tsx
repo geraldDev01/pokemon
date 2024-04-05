@@ -23,7 +23,7 @@ export default function Page(): JSX.Element {
               YOU CAN LIST, SEARCH AND SEE DETAILS OF POKEMONS
             </p>
             <div className="landing-btn-container">
-              <Link href="/home" className="btn btn-primary">
+              <Link href="/pokemon" className="btn btn-primary">
                 Start Exploring
               </Link>
 

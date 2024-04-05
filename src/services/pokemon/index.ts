@@ -59,3 +59,28 @@ export const getPokemons = async (options: OptionsType = {}) => {
     throw error;
   }
 };
+
+export const getPokemonByIdOrName = async (idOrName: string) => {
+  try {
+    const response = await requestData({
+      method: 'GET',
+      url: `/pokemon/${idOrName}`,
+    });
+
+    const pokemonData = response.data;
+
+    const pokemonRequiredData = {
+      id: pokemonData.id,
+      name: pokemonData.name,
+      imageUrl: pokemonData.sprites.other.dream_world.front_default,
+      types: pokemonData.types,
+      height: pokemonData.height,
+      weight: pokemonData.weight,
+    };
+
+    return pokemonRequiredData;
+  } catch (error) {
+    console.error(`Error fetching pokemon with ID or name ${idOrName}:`, error);
+    throw error;
+  }
+};
