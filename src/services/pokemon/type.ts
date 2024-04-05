@@ -5,8 +5,8 @@ export type PokemonType = {
     weight: number;
     imageUrl: string;
     experience?: number;
-    abilities: Array<PokemonAbility>;
-    types: Array<PokemonTypeSlot>;
+    abilities?: Array<PokemonAbility>;
+    types?: Array<PokemonTypeSlot>;
 };
 
 type PokemonAbility = {

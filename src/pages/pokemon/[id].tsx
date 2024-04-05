@@ -4,6 +4,7 @@ import { PokemonType } from '@/services/pokemon/type';
 import { getPokemonByIdOrName } from '@/services/pokemon';
 import Image from 'next/image';
 import pokemonIcon from "@/assets/images/pokemon.jpeg";
+import { Header } from '@/components/Header';
 
 export default function PokemonDetail(): JSX.Element {
     const router = useRouter();
@@ -12,9 +13,8 @@ export default function PokemonDetail(): JSX.Element {
 
     useEffect(() => {
         fetchPokemon();
-
     }, [id]);
-    console.log(pokemon)
+
     const fetchPokemon = async () => {
         try {
             if (typeof id === 'string') {
@@ -32,6 +32,7 @@ export default function PokemonDetail(): JSX.Element {
 
     return (
         <div>
+            <Header/>
             <div className='logo-container-detail'>
                 <figure>
                     <Image
@@ -70,7 +71,7 @@ export default function PokemonDetail(): JSX.Element {
                     <div className='line'></div>
                     <p className="md-text">abilities</p>
                     <div className="abilities-container">
-                        {pokemon.abilities.map((ability, index) => (
+                        {pokemon.abilities && pokemon.abilities.map((ability, index) => (
                             <div
                                 key={index}
                                 className={`ability ${ability.is_hidden ? 'hidden-ability' : ''}`}
@@ -83,7 +84,7 @@ export default function PokemonDetail(): JSX.Element {
 
                     <p className="md-text">Type</p>
                     <div className="types-container">
-                        {pokemon.types.map((type, index) => (
+                        {pokemon.types && pokemon.types.map((type, index) => (
                             <div key={index} className={`type ${type.type.name}`}>
                                 {type.type.name}
                             </div>

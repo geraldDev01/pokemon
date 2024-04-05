@@ -1,9 +1,7 @@
 import Image from "next/image";
 import searchIcon from "@/assets/images/search.svg";
 import debounce from "lodash.debounce"
-import { usePokemonContext } from "@/context/PokemonContext";
-
-
+import { usePokemonContext } from "@/context/PokemonContext/PokemonContext";
 
 export const SearchInput: React.FC = () => {
   const { setSearch, setCurrentPage, setPokemonCards, search } = usePokemonContext();

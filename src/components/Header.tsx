@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
         <nav className="Header-menu">
           <ul className="Header-links">
             <li className="Header-item">
-              <Link href="/">
+              <Link href="/pokemon">
                 <span className="Header-link">Pokemon APP</span>
               </Link>
             </li>
