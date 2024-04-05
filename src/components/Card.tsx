@@ -1,5 +1,6 @@
 import { PokemonType } from "@/services/pokemon/type";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 
 type CardProps = {
@@ -7,10 +8,9 @@ type CardProps = {
 };
 
 export const Card: React.FC<CardProps> = ({ pokemon }) => {
-  const handleDetailsClick = () => {
-    //TODO
-    // send to the details page
-  };
+  const router = useRouter();
+
+  const handleDetailsClick = () => router.push(`/pokemon/${pokemon.id}`)
 
   return (
     <div className="Card-container">
@@ -19,7 +19,7 @@ export const Card: React.FC<CardProps> = ({ pokemon }) => {
         <h2 className="Card-name">{pokemon.name}</h2>
       </div>
       <button className="Card-button" onClick={handleDetailsClick}>
-        See Details
+        More Details
       </button>
     </div>
   );
