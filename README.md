@@ -51,7 +51,7 @@ A quick look at the top-level files and directories you'll see in a Express JS p
 
 6.  _`package.json`_: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
-7  _`README.md`_: A text file containing useful reference information about your project.
+7.  _`README.md`_: A text file containing useful reference information about your project.
 
 8.  _`tsconfig.js`_ Typescript config file
 
