@@ -76,6 +76,8 @@ export const getPokemonByIdOrName = async (idOrName: string) => {
       types: pokemonData.types,
       height: pokemonData.height,
       weight: pokemonData.weight,
+      abilities: pokemonData.abilities,
+      experience: pokemonData.base_experience
     };
 
     return pokemonRequiredData;

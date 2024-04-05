@@ -21,14 +21,10 @@ export const Header: React.FC = () => {
           <ul className="Header-links">
             <li className="Header-item">
               <Link href="/">
-                <span className="Header-link">Pokemon List</span>
+                <span className="Header-link">Pokemon APP</span>
               </Link>
             </li>
-            <li className="Header-item">
-              <Link href="/">
-                <span className="Header-link">Option</span>
-              </Link>
-            </li>
+
           </ul>
         </nav>
       </div>
