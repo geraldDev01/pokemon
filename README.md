@@ -1,4 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+<img width="1037" alt="image" src="https://github.com/geraldDev01/pokemon/assets/101433070/4756dd9a-462b-4f5e-a6e6-1781d012f210">
+<img width="1037" alt="image" src="https://github.com/geraldDev01/pokemon/assets/101433070/5aa3ec34-8013-4887-a2a2-1b60e26de7b3">
+<img width="1047" alt="image" src="https://github.com/geraldDev01/pokemon/assets/101433070/0bab5138-49b9-44c2-a020-b39a0b588166">
 
 _About this project:_
 This is a pokemon app to show a list of all pokemos and the details of them!

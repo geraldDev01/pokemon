@@ -23,11 +23,26 @@
     right: 12px;
     cursor: pointer;
   }
+  &-order-icon {
+    margin-left: 10px;
+  }
 }
 
 .home-container {
   gap: 30px;
+  flex-wrap: wrap;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+  .home-container {
+    width: 100%;
+    gap: 0px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
 }

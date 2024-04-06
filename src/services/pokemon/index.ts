@@ -6,6 +6,7 @@ export const getPokemons = async (options: OptionsType = {}) => {
     name = "",
     limit = 20,
     offset = 0,
+    sortOrder = "asc", 
   } = options;
 
   const params: OptionsType = {
@@ -38,6 +39,17 @@ export const getPokemons = async (options: OptionsType = {}) => {
         return pokemonResponse.data;
       });
       const pokemonData = await Promise.all(promises);
+
+      // As the api does not support sorting, i sort the data here
+      pokemonData.sort((a, b) => {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+        if (sortOrder === "asc") {
+          return nameA.localeCompare(nameB);
+        } else {
+          return nameB.localeCompare(nameA);
+        }
+      });
 
       const pokemonRequiredData = pokemonData.map((pokemon: any) => {
         return {

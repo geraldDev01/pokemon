@@ -10,17 +10,20 @@ export const PokemonProvider: React.FC<PokemonProviderProps> = ({ children }) =>
     const [pokemonCards, setPokemonCards] = useState<JSX.Element[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(0);
     const [search, setSearch] = useState("")
+    const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+
     const itemsPerPage = 21;
 
-    useEffect(() => {
-        loadPokemons();
-    }, [search]);
+
+    const toggleSortOrder = () =>
+        setSortOrder(prevSortOrder => (prevSortOrder === 'asc' ? 'desc' : 'asc'));
 
     const loadPokemons = async () => {
         try {
             const options = {
                 name: search,
                 limit: itemsPerPage,
+                sortOrder,
                 offset: itemsPerPage * currentPage,
             };
             const pokemons = await getPokemons(options);
@@ -41,8 +44,14 @@ export const PokemonProvider: React.FC<PokemonProviderProps> = ({ children }) =>
         }
     };
 
+    useEffect(() => {
+        loadPokemons();
+    }, [search, sortOrder]);
     return (
-        <PokemonContext.Provider value={{ pokemonCards, setCurrentPage, setPokemonCards, currentPage, loadPokemons, search, setSearch }}>
+        <PokemonContext.Provider value={{
+            pokemonCards, setCurrentPage, setPokemonCards, currentPage, loadPokemons, search, setSearch, sortOrder,
+            toggleSortOrder
+        }}>
             {children}
         </PokemonContext.Provider>
     );

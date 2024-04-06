@@ -1,8 +1,3 @@
-.logo-container-detail {
-    display: flex;
-    justify-content: center;
-}
-
 .section_detail {
     display: grid;
     grid-template-columns: 500px 1fr;
@@ -106,9 +101,12 @@
     }
 }
 
-.abilities-container {
-    margin-top: 20px;
+.logo-container-detail {
+    display: flex;
+    justify-content: center;
 }
+
+
 
 .ability {
     display: inline-block;
@@ -116,10 +114,15 @@
     margin-right: 10px;
     background-color: $gray-color;
     border-radius: 5px;
+
+    &-container {
+        margin-top: 20px;
+    }
 }
 
 .hidden-ability {
-    background-color: $success-color;
+    background-color: $darker-success-color;
+    color: $white-color;
 }
 
 .types-container {
@@ -134,4 +137,28 @@
     font-weight: bold;
     background-color: $primary-color;
     color: $white-color;
+}
+
+@media screen and (max-width: 768px) {
+  
+
+    .logo-container-detail {
+
+        img {
+
+            margin-bottom: 50px;
+        }
+
+    }
+    .info-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .section_detail {
+        grid-template-columns: 1fr;
+        .card {
+            width: 280px;
+            height: 350px;
+        }
+    }
 }
