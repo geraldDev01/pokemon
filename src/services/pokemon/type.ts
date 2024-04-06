@@ -30,4 +30,5 @@ export type OptionsType = {
     name?: string;
     limit?: number;
     offset?: number;
+    sortOrder?: "asc" | "desc";
 }
